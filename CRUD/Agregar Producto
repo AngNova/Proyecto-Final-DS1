@@ -1,0 +1,18 @@
+public void AgregarProducto(string nombre, string codigo, int categoriaID, double precio, int existencia, int proveedorID)
+{
+    string query = "INSERT INTO Productos (Nombre, CodigoProducto, CategoriaID, Precio, Existencia, ProveedorID) VALUES (@nombre, @codigo, @categoriaID, @precio, @existencia, @proveedorID)";
+    
+    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+    {
+        command.Parameters.AddWithValue("@nombre", nombre);
+        command.Parameters.AddWithValue("@codigo", codigo);
+        command.Parameters.AddWithValue("@categoriaID", categoriaID);
+        command.Parameters.AddWithValue("@precio", precio);
+        command.Parameters.AddWithValue("@existencia", existencia);
+        command.Parameters.AddWithValue("@proveedorID", proveedorID);
+
+        OpenConnection();
+        command.ExecuteNonQuery();
+        CloseConnection();
+    }
+}
