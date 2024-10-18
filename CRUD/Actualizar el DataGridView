@@ -1,0 +1,16 @@
+private void ActualizarDataGridView()
+{
+    string query = "SELECT * FROM Productos";
+
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        db.OpenConnection();
+        SQLiteDataReader reader = command.ExecuteReader();
+
+        DataTable dt = new DataTable();
+        dt.Load(reader);
+        dgvProductos.DataSource = dt; // Actualiza el DataGridView con la información más reciente
+
+        db.CloseConnection();
+    }
+}
