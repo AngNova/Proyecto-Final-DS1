@@ -1,0 +1,14 @@
+private void btnEliminarProveedor_Click(object sender, EventArgs e)
+{
+    // Verifica que el campo de ID no esté vacío y sea un número válido
+    if (int.TryParse(txtProveedorID.Text, out int proveedorID))
+    {
+        EliminarProveedor(proveedorID);
+        MessageBox.Show("Proveedor eliminado correctamente.");
+        ActualizarListaProveedores(); // Refrescar el DataGridView o la lista de proveedores
+    }
+    else
+    {
+        MessageBox.Show("Por favor, ingrese un ID de proveedor válido.");
+    }
+}
