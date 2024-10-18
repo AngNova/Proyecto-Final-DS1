@@ -1,0 +1,17 @@
+CREATE TABLE Facturas (
+    FacturaID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Fecha TEXT NOT NULL,
+    ProveedorID INTEGER,
+    Total REAL,
+    FOREIGN KEY (ProveedorID) REFERENCES Proveedores(ProveedorID)
+);
+
+CREATE TABLE FacturaDetalles (
+    FacturaDetalleID INTEGER PRIMARY KEY AUTOINCREMENT,
+    FacturaID INTEGER,
+    ProductoID INTEGER,
+    Cantidad INTEGER,
+    PrecioUnitario REAL,
+    FOREIGN KEY (FacturaID) REFERENCES Facturas(FacturaID),
+    FOREIGN KEY (ProductoID) REFERENCES Productos(ProductoID)
+);
