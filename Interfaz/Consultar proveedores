@@ -1,0 +1,5 @@
+private void btnConsultarProveedores_Click(object sender, EventArgs e)
+{
+    List<Proveedor> proveedores = ConsultarProveedores(); // Método para obtener los proveedores
+    dgvProveedores.DataSource = proveedores; // Mostrar en DataGridView
+}
