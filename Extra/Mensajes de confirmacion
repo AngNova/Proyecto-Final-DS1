@@ -1,0 +1,5 @@
+var confirmResult = MessageBox.Show("¿Estás seguro de eliminar este producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+if (confirmResult == DialogResult.Yes)
+{
+    // Lógica de eliminación
+}
