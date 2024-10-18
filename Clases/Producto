@@ -1,0 +1,28 @@
+public class Producto
+{
+    public int ProductoID { get; set; }
+    public string Nombre { get; set; }
+    public string CodigoProducto { get; set; }
+    public int CategoriaID { get; set; }
+    public double Precio { get; set; }
+    public int Existencia { get; set; }
+    public int ProveedorID { get; set; }
+
+    // Constructor
+    public Producto(int productoID, string nombre, string codigoProducto, int categoriaID, double precio, int existencia, int proveedorID)
+    {
+        ProductoID = productoID;
+        Nombre = nombre;
+        CodigoProducto = codigoProducto;
+        CategoriaID = categoriaID;
+        Precio = precio;
+        Existencia = existencia;
+        ProveedorID = proveedorID;
+    }
+
+    // Métodos adicionales según sea necesario, como actualización de stock, etc.
+    public void ActualizarStock(int cantidad)
+    {
+        Existencia += cantidad;
+    }
+}
