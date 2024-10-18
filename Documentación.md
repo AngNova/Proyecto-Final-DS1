@@ -42,3 +42,7 @@ Botones: Agregar, Editar, Eliminar, Consultar.
 Agregar Producto
 Editar Producto
 Eliminar Producto
+
+**8.Proveedores**
+
+Se han agregado la funcion de proveedores a la base de datos, permitiendo actualizar, eliminar, consultar y añadir proveedores.
