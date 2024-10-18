@@ -1,0 +1,14 @@
+public class Empleado : Usuario
+{
+    public Empleado(int usuarioID, string nombre, string correo, string contraseña)
+        : base(usuarioID, nombre, correo, contraseña)
+    {
+    }
+
+    // Empleado tiene permisos limitados (por ejemplo, solo acceso a productos)
+    public void ConsultarInventario()
+    {
+        // Lógica para consultar el inventario
+        Console.WriteLine("Consulta de inventario realizada.");
+    }
+}
