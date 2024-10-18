@@ -1,0 +1,13 @@
+public void EliminarProveedor(int proveedorID)
+{
+    string query = "DELETE FROM Proveedores WHERE ProveedorID = @proveedorID";
+    
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        command.Parameters.AddWithValue("@proveedorID", proveedorID);
+
+        db.OpenConnection();
+        command.ExecuteNonQuery();
+        db.CloseConnection();
+    }
+}
