@@ -1,0 +1,28 @@
+public class Administrador : Usuario
+{
+    public Administrador(int usuarioID, string nombre, string correo, string contraseña)
+        : base(usuarioID, nombre, correo, contraseña)
+    {
+    }
+
+    // Permiso para agregar productos
+    public void AgregarProducto(string nombreProducto, string codigoProducto, double precio)
+    {
+        // Lógica para agregar un producto al sistema
+        Console.WriteLine($"Producto {nombreProducto} agregado con éxito.");
+    }
+
+    // Permiso para eliminar productos
+    public void EliminarProducto(int productoID)
+    {
+        // Lógica para eliminar un producto del sistema
+        Console.WriteLine($"Producto con ID {productoID} eliminado.");
+    }
+
+    // Administrar empleados o usuarios
+    public void GestionarUsuarios()
+    {
+        // Lógica para gestionar usuarios (empleados y otros administradores)
+        Console.WriteLine("Gestión de usuarios realizada.");
+    }
+}
