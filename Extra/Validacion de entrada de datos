@@ -1,0 +1,5 @@
+if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtCodigo.Text))
+{
+    MessageBox.Show("Todos los campos deben estar completos.");
+    return;
+}
