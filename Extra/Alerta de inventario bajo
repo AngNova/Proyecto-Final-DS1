@@ -1,0 +1,4 @@
+if (existencia < 10)
+{
+    MessageBox.Show("Advertencia: Producto con inventario bajo.");
+}
