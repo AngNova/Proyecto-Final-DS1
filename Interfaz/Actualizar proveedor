@@ -1,0 +1,26 @@
+private void btnActualizarProveedor_Click(object sender, EventArgs e)
+{
+    // Verificar que los campos estén llenos y el ID sea un número válido
+    if (int.TryParse(txtProveedorID.Text, out int proveedorID) &&
+        !string.IsNullOrWhiteSpace(txtNombreEmpresa.Text) &&
+        !string.IsNullOrWhiteSpace(txtContacto.Text) &&
+        !string.IsNullOrWhiteSpace(txtDireccion.Text) &&
+        !string.IsNullOrWhiteSpace(txtTelefono.Text))
+    {
+        // Recopilar datos de los campos del formulario
+        string nombreEmpresa = txtNombreEmpresa.Text;
+        string contacto = txtContacto.Text;
+        string direccion = txtDireccion.Text;
+        string telefono = txtTelefono.Text;
+
+        // Llamar al método para actualizar el proveedor
+        ActualizarProveedor(proveedorID, nombreEmpresa, contacto, direccion, telefono);
+
+        MessageBox.Show("Proveedor actualizado correctamente.");
+        ActualizarListaProveedores(); // Refrescar la lista de proveedores
+    }
+    else
+    {
+        MessageBox.Show("Por favor, complete todos los campos correctamente.");
+    }
+}
