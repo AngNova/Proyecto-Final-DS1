@@ -1,0 +1,23 @@
+public class Usuario
+{
+    public int UsuarioID { get; set; }
+    public string Nombre { get; set; }
+    public string Correo { get; set; }
+    public string Contraseña { get; set; }
+
+    // Constructor
+    public Usuario(int usuarioID, string nombre, string correo, string contraseña)
+    {
+        UsuarioID = usuarioID;
+        Nombre = nombre;
+        Correo = correo;
+        Contraseña = contraseña;
+    }
+
+    // Método para iniciar sesión
+    public virtual bool IniciarSesion(string correo, string contraseña)
+    {
+        // Este método podría validarse con la base de datos
+        return (this.Correo == correo && this.Contraseña == contraseña);
+    }
+}
