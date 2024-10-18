@@ -1,0 +1,13 @@
+try
+{
+    db.OpenConnection();
+    command.ExecuteNonQuery();
+}
+catch (Exception ex)
+{
+    MessageBox.Show("Ocurrió un error: " + ex.Message);
+}
+finally
+{
+    db.CloseConnection();
+}
