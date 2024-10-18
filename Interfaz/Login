@@ -1,0 +1,28 @@
+public class Login
+{
+    public bool ValidarCredenciales(string correo, string contraseña)
+    {
+        string query = "SELECT * FROM Usuarios WHERE Correo = @correo AND Contraseña = @contraseña";
+        using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+        {
+            command.Parameters.AddWithValue("@correo", correo);
+            command.Parameters.AddWithValue("@contraseña", contraseña);
+
+            db.OpenConnection();
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                // Usuario autenticado
+                db.CloseConnection();
+                return true;
+            }
+            else
+            {
+                // Credenciales incorrectas
+                db.CloseConnection();
+                return false;
+            }
+        }
+    }
+}
