@@ -1,0 +1,17 @@
+private void btnEliminar_Click(object sender, EventArgs e)
+{
+    int productoID = Convert.ToInt32(txtProductoID.Text);
+
+    string query = "DELETE FROM Productos WHERE ProductoID = @productoID";
+
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        command.Parameters.AddWithValue("@productoID", productoID);
+
+        db.OpenConnection();
+        command.ExecuteNonQuery();
+        db.CloseConnection();
+
+        MessageBox.Show("Producto eliminado correctamente.");
+    }
+}
