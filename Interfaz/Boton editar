@@ -1,0 +1,29 @@
+private void btnEditar_Click(object sender, EventArgs e)
+{
+    int productoID = Convert.ToInt32(txtProductoID.Text);
+    string nombre = txtNombre.Text;
+    string codigo = txtCodigo.Text;
+    int categoriaID = Convert.ToInt32(txtCategoriaID.Text);
+    double precio = Convert.ToDouble(txtPrecio.Text);
+    int existencia = Convert.ToInt32(txtExistencia.Text);
+    int proveedorID = Convert.ToInt32(txtProveedorID.Text);
+
+    string query = "UPDATE Productos SET Nombre = @nombre, CodigoProducto = @codigo, CategoriaID = @categoriaID, Precio = @precio, Existencia = @existencia, ProveedorID = @proveedorID WHERE ProductoID = @productoID";
+
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        command.Parameters.AddWithValue("@productoID", productoID);
+        command.Parameters.AddWithValue("@nombre", nombre);
+        command.Parameters.AddWithValue("@codigo", codigo);
+        command.Parameters.AddWithValue("@categoriaID", categoriaID);
+        command.Parameters.AddWithValue("@precio", precio);
+        command.Parameters.AddWithValue("@existencia", existencia);
+        command.Parameters.AddWithValue("@proveedorID", proveedorID);
+
+        db.OpenConnection();
+        command.ExecuteNonQuery();
+        db.CloseConnection();
+
+        MessageBox.Show("Producto editado correctamente.");
+    }
+}
