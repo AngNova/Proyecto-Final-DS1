@@ -1,0 +1,7 @@
+CREATE TABLE Usuarios (
+    UsuarioID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre TEXT NOT NULL,
+    Correo TEXT NOT NULL,
+    Contraseña TEXT NOT NULL,
+    Rol TEXT NOT NULL -- Este campo puede ser 'Empleado' o 'Administrador'
+);
