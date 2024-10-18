@@ -1,0 +1,10 @@
+private void btnAgregarProveedor_Click(object sender, EventArgs e)
+{
+    string nombreEmpresa = txtNombreEmpresa.Text;
+    string contacto = txtContacto.Text;
+    string direccion = txtDireccion.Text;
+    string telefono = txtTelefono.Text;
+
+    AgregarProveedor(nombreEmpresa, contacto, direccion, telefono);
+    MessageBox.Show("Proveedor agregado correctamente.");
+}
