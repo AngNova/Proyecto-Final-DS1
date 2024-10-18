@@ -1,0 +1,17 @@
+public void ActualizarProveedor(int proveedorID, string nombreEmpresa, string contacto, string direccion, string telefono)
+{
+    string query = "UPDATE Proveedores SET NombreEmpresa = @nombreEmpresa, Contacto = @contacto, Direccion = @direccion, Telefono = @telefono WHERE ProveedorID = @proveedorID";
+
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        command.Parameters.AddWithValue("@proveedorID", proveedorID);
+        command.Parameters.AddWithValue("@nombreEmpresa", nombreEmpresa);
+        command.Parameters.AddWithValue("@contacto", contacto);
+        command.Parameters.AddWithValue("@direccion", direccion);
+        command.Parameters.AddWithValue("@telefono", telefono);
+
+        db.OpenConnection();
+        command.ExecuteNonQuery();
+        db.CloseConnection();
+    }
+}
