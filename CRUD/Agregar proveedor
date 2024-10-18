@@ -1,0 +1,16 @@
+public void AgregarProveedor(string nombreEmpresa, string contacto, string direccion, string telefono)
+{
+    string query = "INSERT INTO Proveedores (NombreEmpresa, Contacto, Direccion, Telefono) VALUES (@nombreEmpresa, @contacto, @direccion, @telefono)";
+    
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        command.Parameters.AddWithValue("@nombreEmpresa", nombreEmpresa);
+        command.Parameters.AddWithValue("@contacto", contacto);
+        command.Parameters.AddWithValue("@direccion", direccion);
+        command.Parameters.AddWithValue("@telefono", telefono);
+
+        db.OpenConnection();
+        command.ExecuteNonQuery();
+        db.CloseConnection();
+    }
+}
