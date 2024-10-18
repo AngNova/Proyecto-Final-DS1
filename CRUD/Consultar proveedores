@@ -1,0 +1,25 @@
+public List<Proveedor> ConsultarProveedores()
+{
+    string query = "SELECT * FROM Proveedores";
+    List<Proveedor> proveedores = new List<Proveedor>();
+
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        db.OpenConnection();
+        SQLiteDataReader reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            Proveedor proveedor = new Proveedor(
+                Convert.ToInt32(reader["ProveedorID"]),
+                reader["NombreEmpresa"].ToString(),
+                reader["Contacto"].ToString(),
+                reader["Direccion"].ToString(),
+                reader["Telefono"].ToString()
+            );
+            proveedores.Add(proveedor);
+        }
+        db.CloseConnection();
+    }
+
+    return proveedores;
+}
