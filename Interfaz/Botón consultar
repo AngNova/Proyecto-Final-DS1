@@ -1,0 +1,18 @@
+private void btnConsultar_Click(object sender, EventArgs e)
+{
+    string query = "SELECT * FROM Productos WHERE Nombre LIKE @nombre";
+
+    using (SQLiteCommand command = new SQLiteCommand(query, db.GetConnection()))
+    {
+        command.Parameters.AddWithValue("@nombre", "%" + txtBuscarNombre.Text + "%");
+
+        db.OpenConnection();
+        SQLiteDataReader reader = command.ExecuteReader();
+        
+        DataTable dt = new DataTable();
+        dt.Load(reader);
+        dgvProductos.DataSource = dt; // Mostrar en DataGridView
+        
+        db.CloseConnection();
+    }
+}
