@@ -1,0 +1,5 @@
+private void ActualizarListaProveedores()
+{
+    List<Proveedor> proveedores = ConsultarProveedores();
+    dgvProveedores.DataSource = proveedores;
+}
