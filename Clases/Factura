@@ -1,0 +1,43 @@
+public class FacturaCompra
+{
+    public int FacturaID { get; set; }
+    public DateTime Fecha { get; set; }
+    public int ProveedorID { get; set; }
+    public List<Producto> ProductosComprados { get; set; }
+    public double Total { get; set; }
+
+    // Constructor
+    public FacturaCompra(int facturaID, DateTime fecha, int proveedorID)
+    {
+        FacturaID = facturaID;
+        Fecha = fecha;
+        ProveedorID = proveedorID;
+        ProductosComprados = new List<Producto>();
+    }
+
+    // Método para agregar productos a la factura
+    public void AgregarProducto(Producto producto, int cantidad)
+    {
+        producto.ActualizarStock(cantidad);  // Actualiza el stock del producto
+        ProductosComprados.Add(producto);    // Agrega el producto a la lista
+        Total += producto.Precio * cantidad; // Actualiza el total de la factura
+    }
+
+    // Método para generar el resumen de la factura
+    public string GenerarResumen()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine($"Factura ID: {FacturaID}");
+        sb.AppendLine($"Fecha: {Fecha}");
+        sb.AppendLine($"Proveedor ID: {ProveedorID}");
+        sb.AppendLine("Productos Comprados:");
+
+        foreach (var producto in ProductosComprados)
+        {
+            sb.AppendLine($"{producto.Nombre} - Cantidad: {producto.Existencia}, Precio: {producto.Precio}");
+        }
+
+        sb.AppendLine($"Total: {Total:C}");
+        return sb.ToString();
+    }
+}
