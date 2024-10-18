@@ -1,0 +1,25 @@
+CREATE TABLE Categorias (
+    CategoriaID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre TEXT NOT NULL,
+    Descripcion TEXT
+);
+
+CREATE TABLE Proveedores (
+    ProveedorID INTEGER PRIMARY KEY AUTOINCREMENT,
+    NombreEmpresa TEXT NOT NULL,
+    Contacto TEXT,
+    Direccion TEXT,
+    Telefono TEXT
+);
+
+CREATE TABLE Productos (
+    ProductoID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre TEXT NOT NULL,
+    CodigoProducto TEXT NOT NULL,
+    CategoriaID INTEGER,
+    Precio REAL,
+    Existencia INTEGER,
+    ProveedorID INTEGER,
+    FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID),
+    FOREIGN KEY (ProveedorID) REFERENCES Proveedores(ProveedorID)
+);
