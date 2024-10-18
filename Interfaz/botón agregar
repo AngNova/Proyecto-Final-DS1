@@ -1,0 +1,13 @@
+private void btnAgregar_Click(object sender, EventArgs e)
+{
+    string nombre = txtNombre.Text;
+    string codigo = txtCodigo.Text;
+    int categoriaID = Convert.ToInt32(txtCategoriaID.Text);
+    double precio = Convert.ToDouble(txtPrecio.Text);
+    int existencia = Convert.ToInt32(txtExistencia.Text);
+    int proveedorID = Convert.ToInt32(txtProveedorID.Text);
+
+    Database db = new Database("Data Source=Inventario.db;Version=3;");
+    db.AgregarProducto(nombre, codigo, categoriaID, precio, existencia, proveedorID);
+    MessageBox.Show("Producto agregado correctamente.");
+}
